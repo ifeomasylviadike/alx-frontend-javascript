@@ -44,9 +44,23 @@ class Teacher implements TeacherInterface {
 
 // createEmployee function that returns Director or Teacher based on salary
 function createEmployee(salary: number | string): Director | Teacher {
-  if (salary < 500) {
+  if (typeof salary === 'number' && salary < 500) {
     return new Teacher();
   }
   return new Director();
 }
 
+
+// Type predicate function to check if employee is a Director
+function isDirector(employee: Director | Teacher): employee is Director {
+  return employee instanceof Director;
+}
+
+// executeWork function that calls appropriate method based on employee type
+function executeWork(employee: Director | Teacher): void {
+  if (isDirector(employee)) {
+    console.log(employee.workDirectorTasks());
+  } else {
+    console.log(employee.workTeacherTasks());
+  }
+}
