@@ -16,11 +16,11 @@ interface printTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
-// Implement the function
-const printTeacher: printTeacherFunction = (firstName, lastName) => {
+// Define the function (using destructuring and named function)
+function printTeacher({ firstName, lastName }: { firstName: string; lastName: string }): string {
   return `${firstName.charAt(0)}. ${lastName}`;
-};
+}
 
-// Example usage
-console.log(printTeacher("Ifeoma", "Dike")); // Output: I. Dike
+
+
 
